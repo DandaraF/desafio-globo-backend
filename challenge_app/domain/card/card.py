@@ -1,6 +1,6 @@
-from app.domain.basic_entity import BasicEntity
+from challenge_app.domain.basic_entity import BasicEntity
 from marshmallow import fields, post_load
-from app.domain.tag import Tag
+from challenge_app.domain.tag import Tag
 from datetime import date
 from typing import List
 
@@ -11,8 +11,8 @@ class Card(BasicEntity):
                  tags: List[Tag] = None,
                  date_creation: date = None,
                  date_modification: date = None,
-                 _id: str = None):
-        super(Card, self).__init__(_id=_id)
+                 entity_id: str = None):
+        super(Card, self).__init__(entity_id)
         self.text = text
         self.tags = tags
         self.date_creation = date_creation

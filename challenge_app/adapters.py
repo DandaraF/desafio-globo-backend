@@ -1,6 +1,6 @@
-from app.adapters import (CardDynamodbAdapter, TagDynamodbAdapter)
+from challenge_app.adapters import (CardDynamodbAdapter, TagDynamodbAdapter)
 
-from app.settings import Settings
+from challenge_app.settings import Settings
 
 
 def get_card_adapter():
