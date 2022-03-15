@@ -7,7 +7,7 @@ from boto3.dynamodb.conditions import Attr
 # noinspection PyPackageRequirements
 from botocore.exceptions import ClientError
 
-from app.adapters import BasicPersistAdapter
+from challenge_app.adapters.basic_persist_adapter import BasicPersistAdapter
 
 
 class NotExistsException(BaseException):
@@ -15,16 +15,14 @@ class NotExistsException(BaseException):
 
 
 class BasicDynamodbAdapter(BasicPersistAdapter):
-    def __init__(self,
-                 table_name: str,
-                 db_endpoint: str,
-                 adapted_class,
-                 logger=None):
+    def __init__(self, table_name, db_endpoint, adapted_class, logger=None):
+
         super().__init__(adapted_class, logger)
         self._table_name = table_name
         self._db_endpoint = db_endpoint
         self._db = self._get_db()
         self._table = self._get_table()
+
         self._create_table_if_dont_exists()
 
     def _do_table_exists(self):
@@ -61,10 +59,10 @@ class BasicDynamodbAdapter(BasicPersistAdapter):
             table.meta.client.get_waiter('table_exists').wait(
                 TableName=self._table_name)
 
-    def get_db(self):
+    def _get_db(self):
         return boto3.resource('dynamodb', endpoint_url=self._db_endpoint)
 
-    def get_table(self):
+    def _get_table(self):
         return self._db.Table(self._table_name)
 
     def _instantiate_object(self, x):
@@ -145,6 +143,32 @@ class BasicDynamodbAdapter(BasicPersistAdapter):
                                f'{error}')
             return None
         return entity_id
+
+    @staticmethod
+    def _get_ops():
+        return {'begins_with': 1,
+                'between': 2,
+                'contains': 1,
+                'eq': 1,
+                'exists': 0,
+                'gt': 1,
+                'gte': 1,
+                'is_in': 1,
+                'lt': 1,
+                'lte': 1,
+                'ne': 1,
+                'not_exists': 0,
+                'size': 0}
+
+    @staticmethod
+    def _args_from_value(value, arg_count):
+        args = []
+        if arg_count == 1:
+            args.append(value)
+        elif arg_count > 1:
+            args.extend(value)
+
+        return args
 
     @staticmethod
     def _get_scan_kwargs(filter_cond, projection_expression):

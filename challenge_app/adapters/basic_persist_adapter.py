@@ -3,8 +3,8 @@ import logging
 
 
 class BasicPersistAdapter(ABC):
-    def __init__(self, adapterd_class, logger=None):
-        self._class = adapterd_class
+    def __init__(self, adapted_class, logger=None):
+        self._class = adapted_class
         self._logger = logger if logger else logging.getLogger()
 
     @property
@@ -12,7 +12,7 @@ class BasicPersistAdapter(ABC):
         return self._logger
 
     @property
-    def adapter_class(self):
+    def adapted_class(self):
         return self._class
 
     @property
@@ -33,6 +33,14 @@ class BasicPersistAdapter(ABC):
 
     @abstractmethod
     def delete(self, entity_id):
+        raise NotImplementedError
+
+    @staticmethod
+    def filter_and(*args, **kwargs):
+        raise NotImplementedError
+
+    @staticmethod
+    def filter_or(*args, **kwargs):
         raise NotImplementedError
 
     @abstractmethod
