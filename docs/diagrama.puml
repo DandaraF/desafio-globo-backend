@@ -1,0 +1,17 @@
+@startuml
+
+class Card << (E,#7fff7f) >> {
+    entity_id: String
+    text: String
+    date_creation: Date
+    date_modification: Date
+    tags: List[Tag]
+}
+
+class Tag{
+    entity_id: String
+    name: String
+}
+
+Card --> Tag
+@enduml

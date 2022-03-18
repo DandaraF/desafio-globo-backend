@@ -2,7 +2,6 @@ from marshmallow import Schema
 
 
 class BasicValue:
-
     @classmethod
     def from_json(cls, dict_data):
         return cls.Schema().load(dict_data)
