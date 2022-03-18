@@ -35,14 +35,6 @@ class BasicPersistAdapter(ABC):
     def delete(self, entity_id):
         raise NotImplementedError
 
-    @staticmethod
-    def filter_and(*args, **kwargs):
-        raise NotImplementedError
-
-    @staticmethod
-    def filter_or(*args, **kwargs):
-        raise NotImplementedError
-
     @abstractmethod
     def filter(self, **kwargs):
         raise NotImplementedError

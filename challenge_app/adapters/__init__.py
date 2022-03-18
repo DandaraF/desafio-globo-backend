@@ -1,8 +1,8 @@
-from .basic_dynamodb_adapter import BasicDynamodbAdapter
-from .card_dynamodb_adapter import CardDynamodbAdapter
-from .tag_dynamodb_adapter import TagDynamodbAdapter
+from .basic_mongodb_adapter import BasicMongodbAdapter
+from .card_mongodb_adapter import CardMongodbAdapter
+from .tag_mongodb_adapter import TagMongodbAdapter
 
 __all__ = [
-    'BasicDynamodbAdapter',
-    'CardDynamodbAdapter',
-    'TagDynamodbAdapter']
+    'BasicMongodbAdapter',
+    'CardMongodbAdapter',
+    'TagMongodbAdapter']

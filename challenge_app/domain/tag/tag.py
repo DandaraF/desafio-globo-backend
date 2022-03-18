@@ -9,7 +9,7 @@ class Tag(BasicValue):
     def __init__(self,
                  name: str = None,
                  entity_id: Optional[str] = None, ):
-        super().__init__()
+        super(Tag, self).__init__()
         self.name = name
         self.entity_id = entity_id
 
@@ -20,5 +20,5 @@ class Tag(BasicValue):
                                  allow_none=False)
 
             @post_load
-            def post_load(self, data, many, partial, **kwargs):
+            def post_load(self, data, many, partial):
                 return Tag(**data)
