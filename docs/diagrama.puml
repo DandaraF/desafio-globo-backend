@@ -8,7 +8,7 @@ class Card << (E,#7fff7f) >> {
     tags: List[Tag]
 }
 
-class Tag{
+class Tag << (E,#7fff7f) >>{
     entity_id: String
     name: String
 }
