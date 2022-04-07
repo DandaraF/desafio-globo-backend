@@ -1,4 +1,4 @@
-from challenge_app.domain.basic_entity import BasicEntity
+from basic_domain import BasicEntity
 from marshmallow import fields, post_load
 from challenge_app.domain.tag import Tag
 from datetime import date

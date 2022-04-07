@@ -1,7 +1,7 @@
 from marshmallow import fields, Schema
 from uuid import uuid4
 
-from challenge_app.domain.basic_value import BasicValue
+from basic_domain import BasicValue
 
 
 class BasicEntity(BasicValue):

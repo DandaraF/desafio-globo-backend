@@ -1,6 +1,6 @@
 from marshmallow import fields, post_load
 
-from challenge_app.domain import BasicEntity
+from basic_domain import BasicEntity
 
 
 class Tag(BasicEntity):
