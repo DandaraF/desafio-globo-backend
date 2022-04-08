@@ -1,4 +1,4 @@
-from challenge_app.domain.basic_entity import BasicEntity
+from basic_domain import BasicEntity
 from marshmallow import fields, post_load
 from challenge_app.domain.tag import Tag
 from datetime import date
@@ -7,10 +7,10 @@ from typing import List
 
 class Card(BasicEntity):
     def __init__(self,
+                 text: str,
+                 date_creation: date,
                  entity_id: str = None,
-                 text: str = None,
                  tags: List[Tag] = None,
-                 date_creation: date = None,
                  date_modification: date = None):
         super().__init__(entity_id)
         self.text = text
@@ -30,4 +30,4 @@ class Card(BasicEntity):
 
         @post_load
         def post_load(self, data, **kwargs):
-            return Tag(**data)
+            return Card(**data)
