@@ -1,5 +1,4 @@
-from .basic_value import BasicValue
-from .basic_entity import BasicEntity
+from challenge_app.domain.basic_entity import BasicEntity
 
 __all__ = [
     'BasicValue',
