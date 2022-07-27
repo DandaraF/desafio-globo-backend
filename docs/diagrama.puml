@@ -5,7 +5,7 @@ class Card << (E,#7fff7f) >> {
     text: String
     date_creation: Date
     date_modification: Date
-    tags: List[Tag]
+    tags[]: Tag
 }
 
 class Tag << (E,#7fff7f) >>{
