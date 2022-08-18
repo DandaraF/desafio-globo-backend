@@ -21,8 +21,10 @@ class Card(BasicEntity):
     class Schema(BasicEntity.Schema):
         text = fields.Str(required=True,
                           allow_none=False)
-        tags = fields.Str(required=False,
-                          allow_none=True)
+        tags = fields.Nested(Tag.Schema,
+                             many=True,
+                             load_default=[],
+                             dump_default=[])
         date_creation = fields.Date(required=True,
                                     allow_none=False)
         date_modification = fields.Date(required=False,
